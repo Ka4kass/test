@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="page.css">
+</head>
+<body>
+    <header class="container">
+        <nav class="main-nav">
+            <a href="./modal.html" class="logo-primary">SviatitBos</a>
+            <ul class="site-nav list">
+                <li class="item"><a href="./modal.html" class="link active">Bebra</a></li>
+                <li class="item"><a href="./modal.html" class="link">Bebra</a></li>
+                <li class="item"><a href="./modal.html" class="link">Bebera</a></li>
+            </ul>
+            <div class="order-icon">
+                <img id="openModal" class="icon" src="./order.svg" alt="Order Icon">
+                <span id="orderCount" class="order-count">0</span>
+            </div>
+        </nav>
+    </header>
+
+
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <h2>Ваші замовлення</h2>
+            <div id="orderList"></div>
+            <button id="clearOrders">Clear Orders</button>
+            <button id="continueToOrder">Continue to Order</button>
+            <p id="orderTotal">Загальна сума: $0.00</p>
+        </div>
+    </div>
+
+    <section class="product-detail">
+        <h2 id="product-name"></h2>
+        <p id="product-city"></p>
+        <p id="product-price"></p>
+        <button id="orderProduct">Замовити</button>
+    </section>
+
+    <script>
+        // Отримуємо параметри з URL
+        const params = new URLSearchParams(window.location.search);
+        const name = params.get('name');
+        const city = params.get('city');
+        const price = params.get('price');
+    
+        // Встановлюємо дані на сторінку
+        document.getElementById('product-name').textContent = name;
+        document.getElementById('product-price').textContent = `$${price}`;
+        document.getElementById('product-city').textContent = `Місто: ${city}`;
+    
+        // Оновлення кнопки замовлення
+        const orderButton = document.getElementById('orderProduct');
+        orderButton.setAttribute("data-name", name);
+        orderButton.setAttribute("data-price", price);
+    </script>
+    
+
+    <script src="modal.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

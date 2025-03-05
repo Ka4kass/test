@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформлення замовлення</title>
+    <link rel="stylesheet" href="checkout.css">
+    <script defer src="checkout.js"></script>
+</head>
+<body>
+
+    <!-- ✅ Фіксований хедер -->
+    <header>
+        <nav class="main-nav">
+            <a href="./modal.html" class="logo-primary">SviatitBos</a>
+            <ul class="site-nav list">
+                <li class="item"><a href="./modal.html" class="link active">Магазин</a></li>
+                <li class="item"><a href="./about.html" class="link">Про нас</a></li>
+                <li class="item"><a href="./contact.html" class="link">Контакти</a></li>
+            </ul>
+            <div class="order-icon">
+                <img id="openModal" class="icon" src="./order.svg" alt="Order Icon">
+                <span id="orderCount" class="order-count">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ✅ Основний контейнер -->
+    <div class="container">
+        <h1>Оформлення замовлення</h1>
+        
+        <!-- ✅ Блок товарів -->
+        <div id="orderedItems">
+            <h2>Ваше замовлення:</h2>
+            <ul id="orderList"></ul>
+        </div>
+
+        <p id="checkoutTotal">Загальна сума: $0.00</p>
+
+        <!-- ✅ Форма для заповнення даних -->
+        <form id="checkoutForm">
+            <div class="form-group">
+                <label for="name">Ім'я:</label>
+                <input type="text" id="name" name="name" placeholder="Ваше ім'я" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Адреса доставки:</label>
+                <input type="text" id="address" name="address" placeholder="Ваша адреса" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Телефон:</label>
+                <input type="tel" id="phone" name="phone" placeholder="+380XXXXXXXXX" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="example@email.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="delivery">Метод доставки:</label>
+                <select id="delivery">
+                    <option value="Нова Пошта">Нова Пошта</option>
+                    <option value="Укрпошта">Укрпошта</option>
+                    <option value="Кур'єр">Кур'єр</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="payment">Метод оплати:</label>
+                <select id="payment">
+                    <option value="Картка">Банківська картка</option>
+                    <option value="Готівка">Готівка при отриманні</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">Перейти до оплати</button>
+        </form>
+    </div>
+
+</body>
+</html>

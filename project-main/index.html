@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин 3D-моделей</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="container">
+        <nav class="main-nav">
+            <a href="./main.html" class="logo-primary">Web<span class="logo-secondary">Studio</span></a>
+            <ul class="site-nav list">
+                <li class="item"><a href="./main.html" class="link active">Контакти</a></li>
+                <li class="item"><a href="./portfolio.html" class="link">Портфоліо</a></li>
+                <li class="item"><a href="./main.html" class="link">Контакти</a></li>
+            </ul>    
+        </nav>  
+
+        <button id="orders-btn" class="modal-btn" onclick="openOrdersModal()">Переглянути замовлення</button>
+
+        <ul class="auch-nav list">
+            <li class="item">
+                <a hrf="mailto:info@devstudio.com" class="link">
+                    <svg class="icon" height="12" width="16">
+                        <use href="./img/symbol-defs.svg#icon-envelope"></use>
+                    </svg>
+                    info@devstudio.com
+                </a>
+            </li>
+            <li class="item">
+                <a href="tel:+380961111111" class="link">   
+                    <svg class="icon" height="16" width="10">
+                        <use href="./img/symbol-defs.svg#icon-smartphone"></use>
+                    </svg>
+                    +38 096 111 11 11
+                </a>
+            </li>
+        </ul>   
+    </header>
+
+   
+
+    <h1>Магазин 3D-моделей</h1>
+    <div class="container" id="product-list"></div>
+
+    <!-- Product Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title"></h2>
+            <img id="modal-image" src="" alt="">
+            <p id="modal-description"></p>
+            <p><strong>Ціна: </strong><span id="modal-price"></span> грн</p>
+            <button onclick="orderProduct()">Замовити</button>
+        </div>
+    </div>
+
+    <!-- Orders Modal -->
+    <div class="modal" id="orders-modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOrdersModal()">&times;</span>
+            <h2>Мої замовлення</h2>
+            <ul id="orders-list"></ul>
+            <p><strong>Загальна сума: </strong><span id="total-price">0</span> грн</p>
+        </div>
+    </div>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>

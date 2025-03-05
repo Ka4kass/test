@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="payment.css">
+</head>
+<body>
+    <header class="container">
+        <nav class="main-nav">
+            <a href="./main.html" class="logo-primary">SviatitBos</a>
+            <ul class="site-nav list">
+                <li class="item"><a href="./modal.html" class="link active">Bebra</a></li>
+                <li class="item"><a href="./modal.html" class="link">Bebra</a></li>
+                <li class="item"><a href="./modal.html" class="link">Bebera</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="checkout">
+        <h2>Оформлення замовлення</h2>
+        <div id="orderSummary">
+            <!-- Тут буде відображатися кількість товарів і загальна сума -->
+        </div>
+        <form id="checkoutForm">
+            <div class="form-group">
+                <label for="name">Повне ім'я:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Електронна пошта:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Адреса доставки:</label>
+                <textarea id="address" name="address" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="phone">Номер телефону:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <button type="submit">Перейти до оплати</button>
+        </form>
+    </section>
+
+    <script>
+        // Отримати замовлення з localStorage
+        const orders = JSON.parse(localStorage.getItem("orders")) || [];
+        if (orders.length === 0) {
+            alert("Ваш кошик порожній. Поверніться до магазину, щоб додати товари.");
+            window.location.href = "main.html"; // Перенаправити на головну сторінку
+        }
+
+        // Відобразити кількість товарів і загальну суму
+        const orderSummary = document.getElementById("orderSummary");
+        if (orderSummary) {
+            const totalItems = orders.length;
+            const totalAmount = orders.reduce((sum, order) => sum + parseFloat(order.price), 0);
+            orderSummary.innerHTML = `
+                <p>Кількість товарів: ${totalItems}</p>
+                <p>Загальна сума: $${totalAmount.toFixed(2)}</p>
+            `;
+        }
+
+        // Вивести замовлення на сторінку (опціонально)
+        const orderList = document.createElement("div");
+        orderList.innerHTML = "<h3>Ваше замовлення:</h3>";
+        orders.forEach((order) => {
+            orderList.innerHTML += `<p>${order.name} - $${order.price}</p>`;
+        });
+        document.querySelector(".checkout").prepend(orderList);
+
+        // Обробник подій для форми
+        document.getElementById("checkoutForm").addEventListener("submit", (event) => {
+            event.preventDefault();
+            // Тут можна додати логіку для оплати
+            alert("Замовлення успішно оформлено! Дякуємо за покупку.");
+            localStorage.removeItem("orders"); // Очистити кошик
+            window.location.href = "main.html"; // Перенаправити на головну сторінку
+        });
+    </script>
+</body>
+</html>
